@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2011-12-20 15:10:36 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="ddFaktury" name="ddfaktury.entity.Sprzedawca" table="Sprzedawca">
+    <id name="id" type="java.lang.Integer">
+      <column name="id"/>
+      <generator class="identity"/>
+    </id>
+    <property name="nazwa" type="string">
+      <column length="80" name="nazwa" not-null="true"/>
+    </property>
+    <property name="miejscowosc" type="string">
+      <column length="20" name="miejscowosc" not-null="true"/>
+    </property>
+    <property name="kod" type="string">
+      <column length="10" name="kod" not-null="true"/>
+    </property>
+    <property name="adres" type="string">
+      <column length="80" name="adres" not-null="true"/>
+    </property>
+    <property name="nip" type="string">
+      <column length="15" name="NIP" not-null="true"/>
+    </property>
+    <property name="bank" type="string">
+      <column length="30" name="bank" not-null="false"/>
+    </property>
+    <property name="numerKonta" type="string">
+      <column length="30" name="numerKonta" not-null="false"/>
+    </property>
+  </class>
+</hibernate-mapping>

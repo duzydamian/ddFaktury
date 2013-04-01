@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2011-12-20 15:10:36 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="ddFaktury" name="ddfaktury.entity.Produkty" table="Produkty">
+    <id name="id" type="java.lang.Integer">
+      <column name="id"/>
+      <generator class="identity"/>
+    </id>
+    <property name="nazwa" type="string">
+      <column length="80" name="nazwa" not-null="true"/>
+    </property>
+    <property name="pkwiu" type="string">
+      <column length="20" name="pkwiu" not-null="true"/>
+    </property>
+    <property name="jednostka" type="string">
+      <column length="10" name="jednostka" not-null="true"/>
+    </property>
+    <property name="vat" type="int">
+      <column name="vat" not-null="true"/>
+    </property>
+    <property name="cena" type="double">
+      <column name="cena" not-null="true" precision="22" scale="0"/>
+    </property>
+  </class>
+</hibernate-mapping>

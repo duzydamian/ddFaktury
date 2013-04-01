@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012-02-19 17:28:57 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="ddfaktury.entity.Faktury" table="Faktury" catalog="ddFaktury">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="klienci" class="ddfaktury.entity.Klienci" fetch="select" lazy="false">
+            <column name="klient" not-null="true" />
+        </many-to-one>
+        <many-to-one name="sprzedawca" class="ddfaktury.entity.Sprzedawca" fetch="select" lazy="false">
+            <column name="sprzedawca" not-null="true" />
+        </many-to-one>
+        <property name="dataSprzedazy" type="date">
+            <column name="dataSprzedazy" length="10" not-null="true" />
+        </property>
+        <property name="dataWystawienia" type="date">
+            <column name="dataWystawienia" length="10" not-null="true" />
+        </property>
+        <property name="numer" type="string">
+            <column name="numer" length="12" not-null="true" />
+        </property>
+        <property name="suma" type="double">
+            <column name="suma" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="data" type="date">
+            <column name="data" length="10" />
+        </property>
+        <property name="listaProduktow" type="string">
+            <column name="listaProduktow" length="80" />
+        </property>
+        <property name="platnosc" type="string">
+            <column name="platnosc" length="30" />
+        </property>
+        <set name="listaProduktows" inverse="true">
+            <key>
+                <column name="faktura" not-null="true" />
+            </key>
+            <one-to-many class="ddfaktury.entity.ListaProduktow" />
+        </set>
+        <set name="listaProduktows_1" inverse="true">
+            <key>
+                <column name="faktura" not-null="true" />
+            </key>
+            <one-to-many class="ddfaktury.entity.ListaProduktow" />
+        </set>
+    </class>
+</hibernate-mapping>
