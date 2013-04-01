@@ -1,0 +1,67 @@
+CREATE USER 'duzydamian'@'localhost' IDENTIFIED BY 'qweasd';
+GRANT ALL PRIVILEGES ON *.* TO 'duzydamian'@'localhost' WITH GRANT OPTION;
+
+ALTER DATABASE `ddFaktury` DEFAULT CHARACTER SET utf8 COLLATE utf8_polish_ci;
+
+charset utf8;
+
+create database ddFaktury;
+
+use ddFaktury;
+
+ALTER DATABASE `ddFaktury` DEFAULT CHARACTER SET utf8 COLLATE utf8_polish_ci;
+
+charset utf8;
+
+create table Sprzedawca(id int auto_increment not null, nazwa varchar(80) not null, miejscowosc varchar(20) not null, kod varchar(10) not null, adres varchar(80) not null, NIP varchar(15) not null, primary key(id)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+#insert into Sprzedawca(nazwa, miejscowosc, kod, adres, NIP) values('Testowa', 'Testowo', '12-345', 'ul. Testowa 1/2', '106-00-00-062');
+
+create table Klienci(id int auto_increment not null, nazwa varchar(80) not null, miejscowosc varchar(20) not null, kod varchar(10) not null, adres varchar(80) not null, NIP varchar(15) not null, primary key(id)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+#insert into Klienci(nazwa, miejscowosc, kod, adres, NIP) values('Testowa', 'Testowo', '12-345', 'ul. Testowa 1/2', '106-00-00-062');
+
+create table Produkty(id int auto_increment not null, nazwa varchar(80) not null, pkwiu varchar(20) not null, jednostka varchar(10) not null, vat int not null, cena double not null, primary key(id)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+#insert into Produkty(nazwa, pkwiu, jednostka, vat, cena) values('Karta Orange 50', '', 'szt.', 23, 50.00);
+
+create table Faktury(id int auto_increment not null, dataSprzedazy DATE not null, dataWystawienia DATE not null, numer varchar(12) not null, klient int not null, sprzedawca int not null, suma double not null, primary key(id), FOREIGN KEY (klient) REFERENCES Klienci(id), FOREIGN KEY (sprzedawca) REFERENCES Sprzedawca(id)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+#insert into Faktury(dataSprzedazy, dataWystawienia, numer, klient, sprzedawca, suma) values('2012-01-01', '2012-01-01', '1/1/2012', 2, 1, 1000.00);
+
+create table listaProduktow(id int auto_increment not null, faktura int not null, produkt int not null, ilosc int not null, cena double not null, primary key(id), FOREIGN KEY (faktura) REFERENCES Faktury(id), FOREIGN KEY (produkt) REFERENCES Produkty(id)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+#insert into listaProduktow(faktura, produkt, ilosc, cena) values(1, 2, 10, 1000.00);
+
+create table Wersje(id int auto_increment not null, tresc TEXT not null, primary key(id)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert into Wersje(tresc) values('Zawiera wstępną bazę danych');
+
+insert into Wersje(tresc) values('Tabele Sprzedawca, Klienci, Produkty, Faktury');
+
+insert into Wersje(tresc) values('Aktualizacja tabel');
+
+insert into Wersje(tresc) values('Dodanie tabeli Wersje przechowującą zmiany w BD');
+
+insert into Wersje(tresc) values('Zmodyfikowana tabela Faktury');
+
+insert into Wersje(tresc) values('Dodana tabela listaProduktow');
+
+insert into Wersje(tresc) values('None');
+
+insert into Wersje(tresc) values('None');
+
+insert into Wersje(tresc) values('None');
+
+insert into Wersje(tresc) values('None');
+
+insert into Wersje(tresc) values('None');
+
+ALTER DATABASE `ddFaktury` DEFAULT CHARACTER SET utf8 COLLATE utf8_polish_ci;
+
+charset utf8;
+
+alter table Faktury add column platnosc varchar(30);
+
+alter table Sprzedawca add column bank varchar(30), add column numerKonta varchar(30);
+
