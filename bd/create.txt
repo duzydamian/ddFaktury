@@ -47,16 +47,6 @@ insert into Wersje(tresc) values('Zmodyfikowana tabela Faktury');
 
 insert into Wersje(tresc) values('Dodana tabela listaProduktow');
 
-insert into Wersje(tresc) values('None');
-
-insert into Wersje(tresc) values('None');
-
-insert into Wersje(tresc) values('None');
-
-insert into Wersje(tresc) values('None');
-
-insert into Wersje(tresc) values('None');
-
 ALTER DATABASE `ddFaktury` DEFAULT CHARACTER SET utf8 COLLATE utf8_polish_ci;
 
 charset utf8;
