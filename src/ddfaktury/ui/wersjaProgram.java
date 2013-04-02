@@ -9,6 +9,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
@@ -28,7 +30,15 @@ public class wersjaProgram extends javax.swing.JDialog {
         getRootPane().setDefaultButton(closeButton);
         try {
             try{
-                wersje = new File("version.hist");
+                ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+
+if (classLoader == null) {
+    classLoader = Class.class.getClassLoader();
+}
+
+classLoader.getResourceAsStream("version.hist");
+
+                wersje = new File(this.getClass().getClassLoader().getResource("ddfaktury/ui/resources/version.hist").getFile());
                 odczytWersji = new FileReader(wersje);
                 buforOdczytu = new BufferedReader(odczytWersji);
                 int i = 0;
@@ -48,7 +58,7 @@ public class wersjaProgram extends javax.swing.JDialog {
                 } catch (FileNotFoundException ex) {
                     Error.println(ex);
                 }
-            } catch (IOException ex) {
+            } catch (Exception ex) {
                 Error.println(ex);
             }
     }

@@ -1,0 +1,8 @@
+1.0
+Pierwsza stabilna wersja programu
+1.0.1
+Poprawione drobne błędy typu nadmiarowa informacja o wersji w nowych oknach itd.
+1.0.2
+Poprawiony problem z automatycznym generowaniem numerów kolejnych faktur.  ( Issue #1 - GitHub)
+1.0.3
+Umieszczenie pliku z historią zmian wewnątrz archiwum JAR. ( Issue #2 - GitHub)
