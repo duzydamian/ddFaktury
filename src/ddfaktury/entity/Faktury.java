@@ -231,30 +231,17 @@ public class Faktury  implements java.io.Serializable {
         session.getTransaction().commit();
     }
 
-    public static String getLastNumber() {
+    public static String getLastNumber(String year) {
             Session session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
-            List<Faktury> result = session.createQuery("from Faktury order by numer desc").list();
+            List<Faktury> result = session.createQuery("from Faktury where numer like '%"+year+"' order by numer+0 desc").list();
             session.getTransaction().commit();
             if(result.size()==0)
-                return "1/01/2012";
-            else
-                if(result.get(0).getNumer().contains("99")){
-                    try{
-                        return getNumberBigeerThanHunder();
-                    }catch(Exception e){
-                        return result.get(0).getNumer();
-                    }
-                }else
-                    return result.get(0).getNumer();
+                return "1/01/1900";
+            else              
+                return result.get(0).getNumer();
         }
-    public static String getNumberBigeerThanHunder(){
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-            session.beginTransaction();
-            List<Faktury> result = session.createQuery("from Faktury where numer>=100 order by numer desc").list();
-            session.getTransaction().commit();
-            return result.get(0).getNumer();
-    }
+
 }
 
 

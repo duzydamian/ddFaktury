@@ -162,6 +162,7 @@ public class edytujFaktura extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ddfaktury.ui.DdFakturyApp.class).getContext().getResourceMap(edytujFaktura.class);
         setTitle(resourceMap.getString("title")); // NOI18N
+        setMinimumSize(new java.awt.Dimension(750, 550));
         setModal(true);
         setName("aboutBox"); // NOI18N
 

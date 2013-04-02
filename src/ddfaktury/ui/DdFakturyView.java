@@ -25,6 +25,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Vector;
 import javax.swing.Timer;
@@ -90,6 +91,7 @@ public class DdFakturyView extends FrameView {
         ResourceMap resourceMap = getResourceMap();
         int messageTimeout = resourceMap.getInteger("StatusBar.messageTimeout");
         messageTimer = new Timer(messageTimeout, new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 statusMessageLabel.setText("");
             }
@@ -100,6 +102,7 @@ public class DdFakturyView extends FrameView {
             busyIcons[i] = resourceMap.getIcon("StatusBar.busyIcons[" + i + "]");
         }
         busyIconTimer = new Timer(busyAnimationRate, new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 busyIconIndex = (busyIconIndex + 1) % busyIcons.length;
                 statusAnimationLabel.setIcon(busyIcons[busyIconIndex]);
@@ -112,6 +115,7 @@ public class DdFakturyView extends FrameView {
         // connecting action tasks to status bar via TaskMonitor
         TaskMonitor taskMonitor = new TaskMonitor(getApplication().getContext());
         taskMonitor.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            @Override
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 String propertyName = evt.getPropertyName();
                 if ("started".equals(propertyName)) {
@@ -215,7 +219,7 @@ public class DdFakturyView extends FrameView {
     public void nowaFaktura() {
         //if (nowaFaktura == null) {
             JFrame mainFrame = DdFakturyApp.getApplication().getMainFrame();
-            nowaFaktura = new nowaFaktura(mainFrame, Faktury.getNewId(), Faktury.getLastNumber());
+            nowaFaktura = new nowaFaktura(mainFrame, Faktury.getNewId(), Faktury.getLastNumber(new SimpleDateFormat("yyyy").format(new Date())));
             nowaFaktura.setLocationRelativeTo(mainFrame);
         //}
         DdFakturyApp.getApplication().show(nowaFaktura);
