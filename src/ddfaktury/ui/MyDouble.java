@@ -45,4 +45,33 @@ public class MyDouble {
         nf.setMinimumFractionDigits(2);
         return nf.format(new BigDecimal(value.replace(',', '.')).setScale(2, BigDecimal.ROUND_HALF_DOWN).doubleValue()).replace(".", ",");
     }
+
+
+   public static double doubleRet4(double value){
+        return new BigDecimal(value).setScale(4, BigDecimal.ROUND_HALF_DOWN).doubleValue();
+   }
+
+    public static double doubleRet4(String value){
+        return new BigDecimal(value).setScale(4, BigDecimal.ROUND_HALF_DOWN).doubleValue();
+   }
+
+    public static Double DoubleRet4(double value){
+        return new BigDecimal(value).setScale(4, BigDecimal.ROUND_HALF_DOWN).doubleValue();
+    }
+
+    public static Double DoubleRet4(String value){
+        return new BigDecimal(value).setScale(4, BigDecimal.ROUND_HALF_DOWN).doubleValue();
+    }
+
+    public static String StringRet4(double value){
+        nf.setMaximumFractionDigits(4);
+        nf.setMinimumFractionDigits(4);
+        return nf.format(new BigDecimal(value).setScale(4, BigDecimal.ROUND_HALF_DOWN).doubleValue()).replace(".", ",");
+    }
+
+    public static String StringRet4(String value){
+        nf.setMaximumFractionDigits(4);
+        nf.setMinimumFractionDigits(4);
+        return nf.format(new BigDecimal(value.replace(',', '.')).setScale(4, BigDecimal.ROUND_HALF_DOWN).doubleValue()).replace(".", ",");
+    }
 }

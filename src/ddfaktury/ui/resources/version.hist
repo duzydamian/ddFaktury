@@ -6,3 +6,5 @@ Poprawione drobne błędy typu nadmiarowa informacja o wersji w nowych oknach it
 Poprawiony problem z automatycznym generowaniem numerów kolejnych faktur.  ( Issue #1 - GitHub)
 1.0.3
 Umieszczenie pliku z historią zmian wewnątrz archiwum JAR. ( Issue #2 - GitHub)
+1.0.4
+Poprawiony problem z zaokrąglaniem wartości brutto/netto. ( Issue #7 - GitHub)

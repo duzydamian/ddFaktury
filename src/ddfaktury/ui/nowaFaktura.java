@@ -549,7 +549,7 @@ public class nowaFaktura extends javax.swing.JDialog {
             oneRow.add(jComboBox2.getSelectedItem());
             oneRow.add(jTextField2.getText());
             oneRow.add(Produkty.getVATByName(jComboBox2.getSelectedItem().toString())+"%");
-            oneRow.add(MyDouble.StringRet(Double.valueOf(Double.valueOf(jTextField3.getText().replace(',', '.'))/(1+(Double.valueOf(Produkty.getVATByName(jComboBox2.getSelectedItem().toString()))/100)))));
+            oneRow.add(MyDouble.StringRet4(Double.valueOf(Double.valueOf(jTextField3.getText().replace(',', '.'))/(1+(Double.valueOf(Produkty.getVATByName(jComboBox2.getSelectedItem().toString()))/100)))));
             oneRow.add(MyDouble.StringRet(jTextField3.getText()));
             oneRow.add(MyDouble.StringRet(Double.valueOf(jTextField3.getText().replace(',', '.'))*Integer.valueOf(jTextField2.getText())));
             listaProduktowVector.add(oneRow);
