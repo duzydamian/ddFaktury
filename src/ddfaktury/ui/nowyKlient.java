@@ -80,7 +80,11 @@ public class nowyKlient extends javax.swing.JDialog {
         }
         
         if(!blad1 & !blad2 & !blad3 & !blad4 & !blad5 & !ostrzezenie){
-            Klienci.add(jTextField1.getText(), jTextField2.getText(), jTextField3.getText(), jTextField4.getText(), jTextField5.getText());
+            String nazwa = jTextField1.getText();
+            nazwa = nazwa.replaceAll("''", "\"");
+            nazwa = nazwa.replaceAll("'", "\"");
+            nazwa = nazwa.replaceAll("\"\"", "\"");
+            Klienci.add(nazwa, jTextField2.getText(), jTextField3.getText(), jTextField4.getText(), jTextField5.getText());
             wyczysc();
             dispose();
         }
