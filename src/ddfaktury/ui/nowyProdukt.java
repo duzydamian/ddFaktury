@@ -36,6 +36,7 @@ public class nowyProdukt extends javax.swing.JDialog {
             jLabel1.setForeground(Color.black);
             blad1 = false;
         }
+
         if(jTextField3.getText().compareTo("")==0 | jTextField3.getText().compareTo("0,00")==0){
             jLabel5.setForeground(Color.red);
             blad2 = true;
@@ -43,12 +44,14 @@ public class nowyProdukt extends javax.swing.JDialog {
             jLabel5.setForeground(Color.black);
             blad2 = false;
         }
+        
         if((jComboBox2.getSelectedIndex()==1 | jComboBox2.getSelectedIndex()==2) & !ostrzezenie){
             jLabel2.setForeground(Color.red);
             ostrzezenie = true;
         }else{
             ostrzezenie = false;
         }
+        
         if(!blad1 & !blad2 & !ostrzezenie){
             Produkty.add(jTextField1.getText(), jTextField2.getText(), jComboBox1.getSelectedItem().toString(), Integer.valueOf(jComboBox2.getSelectedItem().toString().replaceAll("%", "")), Double.valueOf(jTextField3.getText().replace(',', '.')));
             wyczysc();
@@ -136,6 +139,11 @@ public class nowyProdukt extends javax.swing.JDialog {
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23%", "8%", "5%", "0%", "zw" }));
         jComboBox2.setName("jComboBox2"); // NOI18N
+        jComboBox2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox2ItemStateChanged(evt);
+            }
+        });
 
         jLabel5.setText(resourceMap.getString("jLabel5.text")); // NOI18N
         jLabel5.setName("jLabel5"); // NOI18N
@@ -150,6 +158,11 @@ public class nowyProdukt extends javax.swing.JDialog {
         jTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextField3FocusLost(evt);
+            }
+        });
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField3KeyReleased(evt);
             }
         });
 
@@ -278,9 +291,20 @@ public class nowyProdukt extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextField3MouseClicked
 
     private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
-        // TODO add your handling code here:
-        jLabel9.setText(MyDouble.StringRet(Double.valueOf(jTextField3.getText().replace(',', '.'))/1.23).toString());
+        jLabel9.setText(MyDouble.StringRet(Double.valueOf(jTextField3.getText().replace(',', '.'))/Double.valueOf(1+ (Double.valueOf(jComboBox2.getSelectedItem().toString().replaceAll("%", ""))/100))).toString());
     }//GEN-LAST:event_jTextField3FocusLost
+
+    private void jComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox2ItemStateChanged
+        jLabel9.setText(MyDouble.StringRet(Double.valueOf(jTextField3.getText().replace(',', '.'))/Double.valueOf(1+ (Double.valueOf(jComboBox2.getSelectedItem().toString().replaceAll("%", ""))/100))).toString());
+    }//GEN-LAST:event_jComboBox2ItemStateChanged
+
+    private void jTextField3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyReleased
+        try{
+            jLabel9.setText(MyDouble.StringRet(Double.valueOf(jTextField3.getText().replace(',', '.'))/Double.valueOf(1+ (Double.valueOf(jComboBox2.getSelectedItem().toString().replaceAll("%", ""))/100))).toString());
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jTextField3KeyReleased
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton closeButton;

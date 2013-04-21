@@ -8,3 +8,5 @@ Poprawiony problem z automatycznym generowaniem numerów kolejnych faktur.  ( Is
 Umieszczenie pliku z historią zmian wewnątrz archiwum JAR. ( Issue #2 - GitHub)
 1.0.4
 Poprawiony problem z zaokrąglaniem wartości brutto/netto. ( Issue #7 - GitHub)
+1.0.5
+Poprawiony problem z obliczaniem ceny netto przy dodawaniu/edycji produktu. ( Issue #6 - GitHub)
