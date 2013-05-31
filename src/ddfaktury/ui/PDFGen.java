@@ -238,7 +238,15 @@ suma.add(new Chunk("\n"));
 Double sumaDoDruku = brutto23+brutto8+brutto5+brutto0+bruttozw;
 suma.add(new Chunk("Do zapłaty:     "+MyDouble.StringRet(sumaDoDruku)+" PLN\n", czcionka16u));
 suma.add(new Chunk("\n"));
-suma.add(new Chunk("Słownie: "+slownie.ToWords(slownie.liczba_zlotych(((long)(sumaDoDruku/1.0))))+" "+Integer.toString((int) ((sumaDoDruku % 1.0) * 100))+"/100 PLN\n", czcionka10));
+String slownieZlotych = slownie.ToWords(slownie.liczba_zlotych(((long)(MyDouble.DoubleRet(sumaDoDruku)/1.0))));
+int groszeInt = (int) ((MyDouble.DoubleRet(sumaDoDruku) * 100) % 100);
+System.out.println(MyDouble.DoubleRet(sumaDoDruku));
+System.out.println((MyDouble.DoubleRet(sumaDoDruku) * 100));
+System.out.println((MyDouble.DoubleRet(sumaDoDruku) * 100) % 100);
+System.out.println((int) ((MyDouble.DoubleRet(sumaDoDruku) * 100) % 100));
+System.out.println(groszeInt);
+String grosze = Integer.toString(groszeInt);
+suma.add(new Chunk("Słownie: "+slownieZlotych+" "+grosze+"/100 PLN\n", czcionka10));
 
 PdfPTable formaPlatnosciOrazSuma = new PdfPTable(2);
 formaPlatnosciOrazSuma.setWidthPercentage(100);
