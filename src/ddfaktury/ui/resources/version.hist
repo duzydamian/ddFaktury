@@ -12,3 +12,5 @@ Poprawiony problem z zaokrąglaniem wartości brutto/netto. ( Issue #7 - GitHub)
 Poprawiony problem z obliczaniem ceny netto przy dodawaniu/edycji produktu. ( Issue #6 - GitHub)
 1.0.6
 Poprawiony problem ze znakiem ' lub '', który jest znakiem specjalnym przy komunikacji z bazą danych. ( Issue #5 - GitHub)
+1.0.7
+Poprawiony problem z zaokrąglaniem wartości do wypisania słownie.

@@ -38,7 +38,12 @@ if (classLoader == null) {
 
 classLoader.getResourceAsStream("version.hist");
 
-                wersje = new File(this.getClass().getClassLoader().getResource("ddfaktury/ui/resources/version.hist").getFile());
+                String path = "ddfaktury"+File.separator+"ui"+File.separator+"resources"+File.separator+"version.hist";
+                System.out.println(path);
+                System.out.println(this.getClass().getClassLoader().getResource(path));
+                System.out.println(this.getClass().getClassLoader().getResource(path).getFile());
+                wersje = new File(this.getClass().getClassLoader().getResource(path).getFile());
+                System.out.println(wersje);
                 odczytWersji = new FileReader(wersje);
                 buforOdczytu = new BufferedReader(odczytWersji);
                 int i = 0;

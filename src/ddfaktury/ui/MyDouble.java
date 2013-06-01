@@ -74,4 +74,8 @@ public class MyDouble {
         nf.setMinimumFractionDigits(4);
         return nf.format(new BigDecimal(value.replace(',', '.')).setScale(4, BigDecimal.ROUND_HALF_DOWN).doubleValue()).replace(".", ",");
     }
+
+    public static Double DoubleRetTotal(double value){
+        return new BigDecimal(value).setScale(0, BigDecimal.ROUND_HALF_DOWN).doubleValue();
+    }
 }
