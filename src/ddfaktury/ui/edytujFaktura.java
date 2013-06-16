@@ -65,7 +65,7 @@ public class edytujFaktura extends javax.swing.JDialog {
             oneRow.add(o.getProdukty().getNazwa());
             oneRow.add(o.getIlosc());
             oneRow.add(o.getProdukty().getVat()+"%");
-            oneRow.add(MyDouble.StringRet(Double.valueOf(o.getCena()/(1+(Double.valueOf(Produkty.getVATByName(o.getProdukty().getNazwa()))/100)))));
+            oneRow.add(MyDouble.StringRet4(Double.valueOf(o.getCena()/(1+(Double.valueOf(Produkty.getVATByName(o.getProdukty().getNazwa()))/100)))));
             oneRow.add(String.valueOf(o.getCena()));
             oneRow.add(MyDouble.StringRet(o.getCena()*o.getIlosc()));
             listaProduktowVector.add(oneRow);            
@@ -572,7 +572,7 @@ public class edytujFaktura extends javax.swing.JDialog {
             oneRow.add(jComboBox2.getSelectedItem());
             oneRow.add(jTextField2.getText());
             oneRow.add(Produkty.getVATByName(jComboBox2.getSelectedItem().toString())+"%");
-            oneRow.add(MyDouble.StringRet(Double.valueOf(Double.valueOf(jTextField3.getText().replace(',', '.'))/(1+(Double.valueOf(Produkty.getVATByName(jComboBox2.getSelectedItem().toString()))/100)))));
+            oneRow.add(MyDouble.StringRet4(Double.valueOf(Double.valueOf(jTextField3.getText().replace(',', '.'))/(1+(Double.valueOf(Produkty.getVATByName(jComboBox2.getSelectedItem().toString()))/100)))));
             oneRow.add(MyDouble.StringRet(jTextField3.getText()));
             oneRow.add(MyDouble.StringRet(Double.valueOf(jTextField3.getText().replace(',', '.'))*Integer.valueOf(jTextField2.getText())));
             listaProduktowVector.add(oneRow);
